@@ -1,0 +1,45 @@
+# === Core Go & Compilation Binaries ===
+# Delete or skip local execution files generated during development
+*.exe
+*.exe_backup
+*.exe_patched
+*.dll
+*.so
+*.dylib
+# Main compiled application binaries
+__debug_bin
+bin/
+fraud-detection-pipeline
+main
+seed
+
+# === Local Infrastructure & Docker Cache ===
+# Exclude the physical persistent storage volume data folders used by Docker
+.docker/
+redis_data/
+kafka_data/
+/tmp/kraft-combined-logs/
+
+# === Environment Configuration & Secrets ===
+# Block local credentials or connection parameters from leaking to GitHub
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# === Operating System Trash ===
+# General OS metadata leftovers
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === IDE & Text Editor Cache ===
+# Exclude localized developer workspaces
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
