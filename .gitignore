@@ -36,10 +36,7 @@ desktop.ini
 
 # === IDE & Text Editor Cache ===
 # Exclude localized developer workspaces
-.idea/
+
 .vscode/
 *.suo
 *.ntvs*
-*.njsproj
-*.sln
-*.swp
