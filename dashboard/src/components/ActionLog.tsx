@@ -14,7 +14,7 @@ export function ActionLog({ transaction, onClose }: ActionLogProps) {
   useEffect(() => {
     if (transaction && transaction.status !== 'CLEARED') {
       setActiveStep(0);
-      const timers: NodeJS.Timeout[] = [];
+      const timers: ReturnType<typeof setTimeout>[] = [];
       
       // Simulate sequential interdiction milestones
       for (let i = 1; i <= 5; i++) {
