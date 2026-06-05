@@ -103,12 +103,12 @@ A service (`interdiction/`) that consumes from the `fraud-alerts` topic. It trig
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Client as Payment Terminal
-    participant Gateway as Zone 1 API Gateway
-    participant KafkaTX as Kafka: transactions
-    participant Pool as Worker Pool (50 Goroutines)
-    participant Redis as Redis Cache (Hashes & ZSETs)
-    participant KafkaAlert as Kafka: fraud-alerts
+    actor Client as "Payment Terminal"
+    participant Gateway as "Zone 1 API Gateway"
+    participant KafkaTX as "Kafka: transactions"
+    participant Pool as "Worker Pool (50 Goroutines)"
+    participant Redis as "Redis Cache (Hashes & ZSETs)"
+    participant KafkaAlert as "Kafka: fraud-alerts"
 
     Client->>Gateway: POST /api/v1/transactions
     Note over Gateway: Key message by Card Number
