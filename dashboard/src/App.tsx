@@ -4,13 +4,11 @@ import { MetricCards } from './components/MetricCards';
 import { TelemetryPanel } from './components/TelemetryPanel';
 import { EventStream } from './components/EventStream';
 import { ActionLog } from './components/ActionLog';
-import { useSimulation } from './lib/simulation';
 import { useLiveStream } from './lib/liveStream';
 import type { Transaction } from './lib/types';
 import type { FraudAlertPayload } from './lib/liveStream';
 
 function App() {
-  const [isLive, setIsLive] = useState(false);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [totalTransactions, setTotalTransactions] = useState(0);
   const [threatsBlocked, setThreatsBlocked] = useState(0);
@@ -23,7 +21,6 @@ function App() {
   const handleNewTransaction = useCallback((tx: Transaction) => {
     setTransactions((prev) => {
       // If the incoming transaction is an alert, or if it already exists, update it.
-      // In a live system, a transaction is clear first, then a threat is flagged later.
       const existsIdx = prev.findIndex((p) => p.id === tx.id);
       if (existsIdx > -1) {
         const updated = [...prev];
@@ -93,32 +90,16 @@ function App() {
     setCardsFrozen((prev) => prev + 1);
   }, []);
 
-  // Initialize simulation when not live
-  useSimulation({
-    enabled: !isLive,
-    onTransaction: handleNewTransaction,
-  });
-
-  // Initialize live WebSocket stream when live
+  // Initialize live WebSocket stream
   const { status: wsStatus } = useLiveStream({
-    enabled: isLive,
+    enabled: true,
     onTransaction: handleNewTransaction,
     onFraudAlert: handleFraudAlert,
   });
 
-  // Handle mode toggle (clear list when switching modes for visual clarity)
-  const handleToggleLive = (val: boolean) => {
-    setIsLive(val);
-    setTransactions([]);
-    setTotalTransactions(0);
-    setThreatsBlocked(0);
-    setCardsFrozen(0);
-    setSelectedTx(null);
-  };
-
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col font-sans text-slate-200">
-      <TopNav isLive={isLive} setIsLive={handleToggleLive} wsStatus={wsStatus} />
+      <TopNav wsStatus={wsStatus} />
       
       <main className="flex-1 flex overflow-hidden">
         <div className="flex-1 p-6 overflow-y-auto flex flex-col">
