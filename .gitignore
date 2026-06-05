@@ -40,3 +40,4 @@ desktop.ini
 .vscode/
 *.suo
 *.ntvs*
+.vite/
