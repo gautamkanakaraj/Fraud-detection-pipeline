@@ -17,7 +17,7 @@ func InitRedis(ctx context.Context) *redis.Client {
 
 	// Run a ping sanity check to verify connection readiness
 	if _, err := rdb.Ping(ctx).Result(); err != nil {
-		log.Fatalf("❌ Failed to establish connection to Redis: %v", err)
+		log.Fatalf(" Failed to establish connection to Redis: %v", err)
 	}
 
 	return rdb

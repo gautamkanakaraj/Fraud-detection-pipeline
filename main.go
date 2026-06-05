@@ -31,7 +31,7 @@ func main() {
 		"acks":              "all",            // Ensure full broker cluster acknowledgements
 	})
 	if err != nil {
-		log.Fatalf("❌ Failed to spin up Kafka Producer instance: %v", err)
+		log.Fatalf(" Failed to spin up Kafka Producer instance: %v", err)
 	}
 	defer producer.Close()
 
@@ -41,9 +41,9 @@ func main() {
 			switch ev := e.(type) {
 			case *kafka.Message:
 				if ev.TopicPartition.Error != nil {
-					fmt.Printf("❌ Message delivery failure: %v\n", ev.TopicPartition.Error)
+					fmt.Printf(" Message delivery failure: %v\n", ev.TopicPartition.Error)
 				} else {
-					fmt.Printf("✅ Event safely dispatched to partition %d at offset %s\n",
+					fmt.Printf(" Event safely dispatched to partition %d at offset %s\n",
 						ev.TopicPartition.Partition, ev.TopicPartition.Offset)
 				}
 			}

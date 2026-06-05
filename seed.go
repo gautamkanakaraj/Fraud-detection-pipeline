@@ -15,7 +15,7 @@ func main() {
 	rdb := utils.InitRedis(ctx)
 	defer rdb.Close()
 
-	fmt.Println("🔌 Connected to Redis Store. Beginning reference initialization...")
+	fmt.Println(" Connected to Redis Store. Beginning reference initialization...")
 
 	// Mock Dataset mapping Card Numbers to customer file hashes
 	mockProfiles := map[string]map[string]interface{}{
@@ -31,8 +31,8 @@ func main() {
 	}
 
 	if _, err := pipe.Exec(ctx); err != nil {
-		log.Fatalf("❌ Critical error writing profile dataset: %v", err)
+		log.Fatalf("Critical error writing profile dataset: %v", err)
 	}
 
-	fmt.Println("🚀 Redis Hashes successfully populated with customer baseline contexts!")
+	fmt.Println("Redis Hashes successfully populated with customer baseline contexts!")
 }
