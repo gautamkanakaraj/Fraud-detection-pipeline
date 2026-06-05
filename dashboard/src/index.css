@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --color-slate-950: #020617;
+  --color-obsidian: #0a0a0a;
+  --color-fintech-slate: #1e293b;
+  --color-crimson-vibrant: #ef4444;
+  --color-crimson-dark: #7f1d1d;
+  --color-emerald-safe: #10b981;
+  --color-neon-purple: #8b5cf6;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-200 antialiased overflow-x-hidden;
+  }
+}
+
+/* Custom Scrollbar for the event stream */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
