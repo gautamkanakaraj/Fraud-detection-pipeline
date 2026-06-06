@@ -1,4 +1,4 @@
-# Real-Time Financial Fraud Detection & Interdiction Pipeline
+# Real-Time Financial Fraud Detection & Interdiction Pipeline  (vertical scaled)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Version](https://img.shields.io/github/go-mod/go-version/gautamkanakaraj/fraud-detection-pipeline?filename=go.mod)](https://go.dev)
